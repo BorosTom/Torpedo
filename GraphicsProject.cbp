@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="WidgetLib" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/GraphicsProject" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/GraphicsProject" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-O2" />
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add directory="include" />
+		</Compiler>
+		<Linker>
+			<Add library="lib/libgraphics.a" />
+			<Add library="lib/libgraphicsd.a" />
+			<Add library="lib/libsdl_ttf.a" />
+			<Add library="lib/libSDL.dll.a" />
+			<Add library="lib/libSDLmain.a" />
+			<Add directory="lib" />
+		</Linker>
+		<Unit filename="CALCULATOR.cpp" />
+		<Unit filename="CALCULATOR.hpp" />
+		<Unit filename="Checkbox.cpp" />
+		<Unit filename="Checkbox.hpp" />
+		<Unit filename="Choose.cpp" />
+		<Unit filename="Choose.hpp" />
+		<Unit filename="Color.cpp" />
+		<Unit filename="Color.hpp" />
+		<Unit filename="Dropdown.cpp" />
+		<Unit filename="Dropdown.hpp" />
+		<Unit filename="FILTER.cpp" />
+		<Unit filename="FILTER.hpp" />
+		<Unit filename="Func_button.cpp" />
+		<Unit filename="Func_button.hpp" />
+		<Unit filename="GameMaster.cpp" />
+		<Unit filename="GameMaster.hpp" />
+		<Unit filename="KOLCSONZO.cpp" />
+		<Unit filename="KOLCSONZO.hpp" />
+		<Unit filename="Misc.cpp" />
+		<Unit filename="Misc.hpp" />
+		<Unit filename="My_window.cpp" />
+		<Unit filename="My_window.hpp" />
+		<Unit filename="Num.cpp" />
+		<Unit filename="Num.hpp" />
+		<Unit filename="Password.cpp" />
+		<Unit filename="Password.hpp" />
+		<Unit filename="Player.cpp" />
+		<Unit filename="Player.hpp" />
+		<Unit filename="Push_button.cpp" />
+		<Unit filename="Push_button.hpp" />
+		<Unit filename="Ship.cpp" />
+		<Unit filename="Ship.hpp" />
+		<Unit filename="StaticText.cpp" />
+		<Unit filename="StaticText.hpp" />
+		<Unit filename="Widget.cpp" />
+		<Unit filename="Widget.hpp" />
+		<Unit filename="Window.cpp" />
+		<Unit filename="Window.hpp" />
+		<Unit filename="main.cpp" />
+		<Unit filename="texteditor.cpp" />
+		<Unit filename="texteditor.hpp" />
+		<Unit filename="widget_lib.hpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
