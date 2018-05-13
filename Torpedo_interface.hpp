@@ -14,9 +14,10 @@ private:
     int _cell_piece_w, _cell_piece_h;                               ///a játéktér mérete cellaszámban
     int _table_x, _table_y, _table_w, _table_h;                     ///a játéktér pozíciója és mérete pixelben
     vector<pair<double,double> > _interval_w, _interval_h;          ///az egyes cellákhoz rendelt pixel intervallumok
-    vector<vector<cell_state> > _table_own, _table_enemy;             ///a cellák állapota
+    vector<vector<cell_state> > _table_own, _table_enemy;           ///a cellák állapota
     double _h_offset;                                               ///az alsó tábla függõleges eltolása
     int _text_size=20;                                              ///a feliratoknak fenntartott magasság (és szélesség)
+    int _click_x, _click_y;                                         ///a jelenleg kattintott cella
 
     Color   _grid_color, _gridbg_color, _text_color, _live_color,   ///a kirajzolás színei
             _damaged_color, _destroyed_color, _sinked_color;
@@ -59,6 +60,10 @@ public:
     void draw_sinked(int i, int j, bool offset) const;              ///elsüllyedt cella kirajzolása
 
     void set_cell_state(bool enemy, int x, int y, cell_state cs);   ///egy cella állapotának változtatása
+
+    pair<int,int> get_click_coord(){
+        return pair<int,int>{_click_x,_click_y};
+    }
 };
 
 #endif // TORPEDO_INTERFACE_HPP_INCLUDED
