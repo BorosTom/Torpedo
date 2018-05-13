@@ -3,6 +3,7 @@
 Ship::Ship(int x, int y, int w, int h, int armor)
     :_cell_x(x),_cell_y(y),_cell_w(w),_cell_h(h),_armor(armor),_crit(3),_lives(x*y),_live(true)
 {
+    ///hajó elemek elhelyezése
     for(int i=0; i<_cell_w; i++)
     {
         _ship_panels.push_back(vector<int> {});
@@ -17,11 +18,16 @@ void Ship::hit(int x, int y, int dmg)
 {
     if(_live)
     {
-        _ship_panels[x][y]-=dmg;
+        ///sérülés
+        if(_ship_panels[x][y]>0){
+            _ship_panels[x][y]-=dmg;
+        }
+        ///elem elpusztulás
         if(_ship_panels[x][y]<0)
         {
             _lives--;
         }
+        ///kritikus találat
         if(_ship_panels[x][y]<=0-_crit)
         {
             _lives=0;
@@ -35,6 +41,7 @@ void Ship::hit(int x, int y, int dmg)
                 }
             }
         }
+        ///elsüllyedés
         if(_lives<=0)
         {
             _live=false;

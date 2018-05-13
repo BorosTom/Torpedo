@@ -6,6 +6,7 @@ GameMaster::GameMaster(int w, int h, bool single)
         :_map_w(w),_map_h(h),_state(deploy1),_singleplayer(single),_current_ship_x(0), _current_ship_y(0),_current_ship_w(0),
          _current_ship_h(0),_wait_for_direction(false)
 {
+    ///játék táblák létrehozása
     for(int i=0;i<_map_w;i++){
         _player1_own.push_back({});
         _player1_enemy.push_back({});
@@ -18,6 +19,7 @@ GameMaster::GameMaster(int w, int h, bool single)
             _player2_enemy[i].push_back({nullptr,false});
         }
     }
+    ///hajó méretek beállítása
     for(int i=0;i<4;i++){
         _pair_ships.push_back({1,i+1});
         _pair_ships.push_back({1,i+1});

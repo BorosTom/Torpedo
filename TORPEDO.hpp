@@ -7,21 +7,22 @@
 
 class TORPEDO: public Window{
 private:
-    int XX, YY, _game_w, _game_h;
+    int XX, YY;                                         ///ablak mérete
+    int _game_w, _game_h;                               ///játéktér celláinak száma
 
-    GameMaster* _game;
+    GameMaster* _game;                                  ///a játékot kezelõ osztály
 
-    Torpedo_interface* _interface;
-    Dropdown* _ammo;
-    Dropdown* _ships;
+    Torpedo_interface* _interface;                      ///játéktér widget
+    Dropdown* _ammo;                                    ///lõszer választó
+    Dropdown* _ships;                                   ///hajó választó
 
 
 public:
     TORPEDO(int xx, int yy, int w, int h);
 
-    void choose_ship(){}
-    void choose_ammo(){}
-    void click(){}
+    void choose_ship(){}                                ///jelenleg kivélasztott hajó változtatása
+    void choose_ammo(){}                                ///jelenleg kivélasztott lõszer változtatása
+    void click(){}                                      ///kattintás a widgetre
 
 
 };
