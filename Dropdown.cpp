@@ -256,3 +256,10 @@ void Dropdown::delete_element(string str)
     _hbig=_h+(_piece)*_h;
 }
 
+void Dropdown::erease_elements()
+{
+    while(_vec.size()>1){
+        delete_element(_vec.back());
+    }
+    //cout<<_vec.size()<<endl;
+}

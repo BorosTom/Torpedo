@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <functional>
 
+#include <iostream>
 #include "Widget.hpp"
 
 class Dropdown: public Widget
@@ -24,7 +25,8 @@ public:
     Dropdown(int x, int y, int w, int h, vector<string>& v, int p=3, function<void()> f=0);
     Dropdown(int x, int y, int w, int h, vector<string>* v, int p=3, function<void()> f=0);
 
-    virtual string get_default(){
+    virtual string get_default()
+    {
         return _default;
     }
     virtual string get_text() const
@@ -43,10 +45,16 @@ public:
 
     virtual void action()
     {
-        if(_f!=0){
+        if(_f!=0)
+        {
             _f();
         }
     }
+    int get_vec_size()
+    {
+        return _vec.size();
+    }
+    void erease_elements();
 
 };
 

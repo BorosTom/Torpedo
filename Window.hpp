@@ -35,6 +35,7 @@ public:
     {
         _vec.push_back(w);
     };
+    virtual void custom(event ev){}
 };
 
 
