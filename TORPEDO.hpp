@@ -5,7 +5,8 @@
 #include "Torpedo_interface.hpp"
 #include "GameMaster.hpp"
 
-class TORPEDO: public Window{
+class TORPEDO: public Window
+{
 private:
     int XX, YY;                                                     ///ablak mérete
     int _game_w, _game_h;                                           ///játéktér celláinak száma
@@ -16,18 +17,24 @@ private:
     Dropdown* _ammo;                                                ///lõszer választó
     Dropdown* _ships;                                               ///hajó választó
 
-
+    size_t _ammo_type_count, _ship_type_count;                         ///a dropdownok hossza
 public:
     TORPEDO(int xx, int yy, int w, int h);
 
-    void choose_ship(){}                                            ///jelenleg kivélasztott hajó változtatása
-    void choose_ammo(){}                                            ///jelenleg kivélasztott lõszer változtatása
-    void click(){                                                   ///kattintás a widgetre
+    void choose_ship()                                              ///jelenleg kivélasztott hajó változtatása
+    {
+        _game->set_ship(_ships->get_text());
+    }
+    void choose_ammo()                                              ///jelenleg kivélasztott lõszer változtatása
+    {
+        _game->set_ammo(_ammo->get_text());
+    }
+    void click()                                                    ///kattintás a widgetre
+    {
         _game->click(_interface->get_click_coord().first,
                      _interface->get_click_coord().second);
     }
-
-
+    virtual void custom(event ev);
 };
 
 #endif // TORPEDO_HPP_INCLUDED
