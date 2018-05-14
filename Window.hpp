@@ -29,13 +29,16 @@ protected:
     double _xx,_yy;
     int focus;
 public:
-    Window(double xx, double yy):_xx(xx),_yy(yy),focus(-1){gout.open(_xx,_yy);}
+    Window(double xx, double yy):_xx(xx),_yy(yy),focus(-1)
+    {
+        gout.open(_xx,_yy);
+    }
     virtual void event_loop();
     virtual void add_widget(Widget* w)
     {
         _vec.push_back(w);
     };
-    virtual void custom(event ev){}
+    virtual void custom(event ev) {}
 };
 
 

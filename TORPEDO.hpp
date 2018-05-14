@@ -17,7 +17,7 @@ private:
     Dropdown* _ammo;                                                ///lõszer választó
     Dropdown* _ships;                                               ///hajó választó
 
-    size_t _ammo_type_count, _ship_type_count;                         ///a dropdownok hossza
+    size_t _ammo_type_count, _ship_type_count;                      ///a dropdownok hossza
 public:
     TORPEDO(int xx, int yy, int w, int h);
 
@@ -35,6 +35,10 @@ public:
                      _interface->get_click_coord().second);
     }
     virtual void custom(event ev);
+
+    void gamemode_change();                                         ///aktív legördülõ választása
+
+    void cell_change();
 };
 
 #endif // TORPEDO_HPP_INCLUDED

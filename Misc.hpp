@@ -10,7 +10,8 @@ using namespace std;
 using namespace genv;
 
 template<class T>
-string tostring(T val){
+string tostring(T val)
+{
     stringstream ss;
     ss<<val;
     return ss.str();

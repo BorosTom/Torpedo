@@ -6,7 +6,8 @@ void Window::event_loop()
 {
     event ev;
     while(gin >> ev && ev.keycode != key_escape)
-    {   custom(ev);
+    {
+        custom(ev);
         if (ev.type == ev_mouse && ev.button==btn_left)
         {
             focus=-1;

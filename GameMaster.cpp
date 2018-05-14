@@ -2,9 +2,9 @@
 #include "Misc.hpp"
 
 
-GameMaster::GameMaster(int w, int h, bool single)
-    :_map_w(w),_map_h(h),_state(deploy1),_singleplayer(single),_current_ship_x(0), _current_ship_y(0),_current_ship_w(0),
-     _current_ship_h(0),_wait_for_direction(false)
+GameMaster::GameMaster(int w, int h, function<void()> gc, function<void()> cc)
+    :_map_w(w),_map_h(h),_state(deploy1),_current_ship_x(0), _current_ship_y(0),_current_ship_w(0),
+     _current_ship_h(0),_wait_for_direction(false),_gamestate_change(gc),_cell_change(cc)
 {
     ///játék táblák létrehozása
     for(int i=0; i<_map_w; i++)
@@ -25,7 +25,7 @@ GameMaster::GameMaster(int w, int h, bool single)
     for(int i=0; i<4; i++)
     {
         _pair_ships_pl1.push_back({{1,i+1},tostring(1)+"x"+tostring(i+1)});
-        cout<<tostring(1)+"x"+tostring(i+1)<<endl;
+        //cout<<tostring(1)+"x"+tostring(i+1)<<endl;
         _pair_ships_pl2.push_back({{1,i+1},tostring(1)+"x"+tostring(i+1)});
     }
 
@@ -51,17 +51,18 @@ void GameMaster::click(int x, int y)
     {
     case deploy1:
         deploy_fleet(x,y);
-        if(_pair_ships_pl1.size()<=0){
+        if(_pair_ships_pl1.size()<=0)
+        {
             _state=deploy2;
+            _gamestate_change();
         }
         break;
     case deploy2:
-        if(_singleplayer)
+        deploy_fleet(x,y);
+        if(_pair_ships_pl2.size()<=0)
         {
-            deploy_fleet(x,y);
-        }
-        if(_pair_ships_pl2.size()<=0){
             _state=pl1;
+            _gamestate_change();
         }
         break;
     case pl1:
@@ -78,9 +79,19 @@ void GameMaster::click(int x, int y)
 
 void GameMaster::deploy_fleet(int x, int y)
 {
-    if(!_wait_for_direction)
+    if(_state==deploy1)
     {
+        if(!_wait_for_direction)
+        {
+            _current_ship_x=x;
+            _current_ship_y=y;
+            _wait_for_direction=true;
+            _cell_change();
+        }
+        else
+        {
 
+        }
     }
     else
     {
@@ -88,10 +99,13 @@ void GameMaster::deploy_fleet(int x, int y)
     }
 }
 
-void GameMaster::set_ammo(string str){
+void GameMaster::set_ammo(string str)
+{
     _current_ammo=noammo;
-    for(size_t i=0;i<_ammo.size();i++){
-        if(str.compare(_ammo[i].second)==0){
+    for(size_t i=0; i<_ammo.size(); i++)
+    {
+        if(str.compare(_ammo[i].second)==0)
+        {
             _current_ammo=_ammo[i].first;
         }
     }
@@ -100,9 +114,11 @@ void GameMaster::set_ammo(string str){
 void GameMaster::set_ship(string str)
 {
     set_current_ship_size(-1,-1);
-    for(size_t i=0;i<_str_ships.size();i++){
+    for(size_t i=0; i<_str_ships.size(); i++)
+    {
 
-        if(str.compare(_pair_ships_pl1[i].second)==0){
+        if(str.compare(_pair_ships_pl1[i].second)==0)
+        {
             //cout<<str<<"\t"<<_pair_ships_pl1[i].second<<endl;
             set_current_ship_size(_pair_ships_pl1[i].first.first,_pair_ships_pl1[i].first.second);
             //cout<<_pair_ships_pl1[i].first.first<<"\t"<<_pair_ships_pl1[i].first.second<<endl;

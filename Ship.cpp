@@ -19,7 +19,8 @@ void Ship::hit(int x, int y, int dmg)
     if(_live)
     {
         ///sérülés
-        if(_ship_panels[x][y]>0){
+        if(_ship_panels[x][y]>0)
+        {
             _ship_panels[x][y]-=dmg;
         }
         ///elem elpusztulás

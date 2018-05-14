@@ -9,7 +9,8 @@
 
 using namespace std;
 
-class Ship{
+class Ship
+{
     int _cell_x, _cell_y, _cell_w, _cell_h;                         ///pozíció és méret cellában
     int _armor, _crit, _lives;                                      ///a hajó elemek élete, a kritikus sebzés küszöbe és a mõködõ elemek száma
     vector<vector<int> > _ship_panels;                              ///a hajó elemek elhelyezkedése és élete
@@ -20,7 +21,10 @@ public:
 
     virtual void hit(int x, int y, int dmg=1);                      ///hajó eltalálása
 
-    bool get_live(){return _live;}                                  ///elsüllyedt-e
+    bool get_live()
+    {
+        return _live;   ///elsüllyedt-e
+    }
     int get_armor(int x, int y);                                    ///elem élete
 
     /*bool valid_coordinates(int x, int y){

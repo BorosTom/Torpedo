@@ -128,13 +128,15 @@ void Torpedo_interface::draw() const
             <<text("Own fleet")
             <<move_to(_x+(_w/2)-(gout.twidth("Enemy fleet")/2),_y+_h_offset+(_text_size/2)+(gout.cascent()/2))
             <<text("Enemy fleet");
-        for(size_t i=0;i<_interval_w.size();i++){
+        for(size_t i=0; i<_interval_w.size(); i++)
+        {
             gout<<move_to(_interval_w[i].first+(_interval_w[i].second-_interval_w[i].first)/2-gout.twidth(tostring(char(65+i)))/2,_y+_text_size+_text_size/2+gout.cascent()/2)
                 <<text(tostring(char(65+i)))
                 <<move_to(_interval_w[i].first+(_interval_w[i].second-_interval_w[i].first)/2-gout.twidth(tostring(char(65+i)))/2,_y+_text_size+_text_size/2+gout.cascent()/2+_h_offset)
                 <<text(tostring(char(65+i)));
         }
-        for(size_t i=0;i<_interval_h.size();i++){
+        for(size_t i=0; i<_interval_h.size(); i++)
+        {
             gout<<move_to(_x+(_text_size/2)-(gout.twidth(tostring(i+1))/2),_interval_h[i].first+(_interval_h[i].second-_interval_h[i].first)/2+(gout.cascent()/2))
                 <<text(tostring(i+1))
                 <<move_to(_x+(_text_size/2)-(gout.twidth(tostring(i+1))/2),_h_offset+_interval_h[i].first+(_interval_h[i].second-_interval_h[i].first)/2+(gout.cascent()/2))
@@ -269,15 +271,30 @@ void Torpedo_interface::handle(genv::event ev)
 {
     if(_active)
     {
-        if(ev.type==ev_mouse && ev.button==btn_left){
-            for(int i=0;i<_cell_piece_w;i++){
-                for(int j=0;j<_cell_piece_h;j++){
-                    if(ev.pos_x>_interval_w[i].first && ev.pos_x<_interval_w[i].second && ev.pos_y>_interval_h[j].first && ev.pos_y<_interval_h[j].second){
+        if(ev.type==ev_mouse && ev.button==btn_left)
+        {
+            for(int i=0; i<_cell_piece_w; i++)
+            {
+                for(int j=0; j<_cell_piece_h; j++)
+                {
+                    if(ev.pos_x>_interval_w[i].first && ev.pos_x<_interval_w[i].second && ev.pos_y>_interval_h[j].first && ev.pos_y<_interval_h[j].second)
+                    {
                         _click_x=i;
                         _click_y=j;
                         _f();
                         _click_x=-1;
                         _click_y=-1;
+                    }
+                    else
+                    {
+                        if(ev.pos_x>_interval_w[i].first && ev.pos_x<_interval_w[i].second && ev.pos_y>_h_offset+_interval_h[j].first && ev.pos_y<_h_offset+_interval_h[j].second)
+                        {
+                            _click_x=i;
+                            _click_y=j;
+                            _f();
+                            _click_x=-1;
+                            _click_y=-1;
+                        }
                     }
                 }
             }

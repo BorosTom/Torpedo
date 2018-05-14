@@ -44,17 +44,21 @@ public:
     {
         return _active;
     }
-    virtual void set_visible(bool b){
+    virtual void set_visible(bool b)
+    {
         _visible=b;
         _active=b;
-        if(_is_focusable){
+        if(_is_focusable)
+        {
             _focusable=b;
         }
     }
-    bool get_visible(){
+    bool get_visible()
+    {
         return _visible;
     }
-    bool get_focusable() const{
+    bool get_focusable() const
+    {
         return _focusable;
     }
 

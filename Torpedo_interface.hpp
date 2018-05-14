@@ -5,7 +5,7 @@
 #include <functional>
 #include <vector>
 
-enum cell_state{emptycell,miss,ok,damaged,destroyed,sinked};
+enum cell_state {emptycell,miss,ok,damaged,destroyed,sinked};
 
 class Torpedo_interface: public Widget
 {
@@ -31,25 +31,32 @@ public:
     {
         return "";
     }
-    virtual void set_grid_color(col c){                             ///keret szín beállítása
+    virtual void set_grid_color(col c)                              ///keret szín beállítása
+    {
         _grid_color.set_color(c);
     }
-    virtual void set_gridbg_color(col c){                           ///tábla háttér szín beállítása
+    virtual void set_gridbg_color(col c)                            ///tábla háttér szín beállítása
+    {
         _gridbg_color.set_color(c);
     }
-    virtual void set_text_color(col c){                             ///szöveg szín beállítása
+    virtual void set_text_color(col c)                              ///szöveg szín beállítása
+    {
         _text_color.set_color(c);
     }
-    virtual void set_live_color(col c){                             ///sértetlen elemek szín beállítása
+    virtual void set_live_color(col c)                              ///sértetlen elemek szín beállítása
+    {
         _live_color.set_color(c);
     }
-    virtual void set_damaged_color(col c){                          ///sérült elemek szín beállítása
+    virtual void set_damaged_color(col c)                           ///sérült elemek szín beállítása
+    {
         _damaged_color.set_color(c);
     }
-    virtual void set_destroyed_color(col c){                        ///elpusztult elemek szín beállítása
+    virtual void set_destroyed_color(col c)                         ///elpusztult elemek szín beállítása
+    {
         _destroyed_color.set_color(c);
     }
-    virtual void set_sinked_color(col c){                           ///elsüllyedt elemek szín beállítása
+    virtual void set_sinked_color(col c)                            ///elsüllyedt elemek szín beállítása
+    {
         _sinked_color.set_color(c);
     }
 
@@ -61,8 +68,9 @@ public:
 
     void set_cell_state(bool enemy, int x, int y, cell_state cs);   ///egy cella állapotának változtatása
 
-    pair<int,int> get_click_coord(){
-        return pair<int,int>{_click_x,_click_y};
+    pair<int,int> get_click_coord()
+    {
+        return pair<int,int> {_click_x,_click_y};
     }
 };
 

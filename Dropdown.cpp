@@ -258,7 +258,8 @@ void Dropdown::delete_element(string str)
 
 void Dropdown::erease_elements()
 {
-    while(_vec.size()>1){
+    while(_vec.size()>1)
+    {
         delete_element(_vec.back());
     }
     //cout<<_vec.size()<<endl;

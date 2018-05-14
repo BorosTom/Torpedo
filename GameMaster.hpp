@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <functional>
 
 #include "Ship.hpp"
 
@@ -16,7 +17,7 @@ private:
     int _map_w, _map_h;                                                                             ///játéktér mérete cellában
     vector<vector<pair<Ship*,bool> > > _player1_own, _player1_enemy, _player2_own, _player2_enemy;  ///a játékosok flottái
     gamestates _state;                                                                              ///a játék állapota
-    bool _singleplayer;                                                                             ///egyjátékos mód-e
+    //bool _singleplayer;                                                                             ///egyjátékos mód-e
 
     ///elhelyezéshez sükséges adatok
     int _current_ship_x, _current_ship_y, _current_ship_w, _current_ship_h;                         ///a jelenleg elhelyezni kívánt hajó pozíciója és mérete
@@ -29,8 +30,13 @@ private:
     vector<pair<pair<int,int>,string> > _pair_ships_pl1, _pair_ships_pl2;                           ///hajók méretei
     vector<string> _str_ships;                                                                      ///hajók megnevezése
 
+    function<void()> _gamestate_change;
+    function<void()> _cell_change;
+
+    int _changed_x, _changed_y;
+
 public:
-    GameMaster(int w, int h, bool single=true);
+    GameMaster(int w, int h, function<void()> gc, function<void()> cc);
     bool valid_coordinates(int x, int y);                                                           ///érvényes-e a hivatkozott cella
     void click(int x, int y);                                                                       ///kattintás egy adott cellára
     void deploy_fleet(int x, int y);                                                                ///flotta elhelyezése
@@ -61,6 +67,33 @@ public:
         return _state;
     }
     void set_ship(string str);                                                                      ///jelenlegihajóméret beállítása
+
+    vector<vector<pair<Ship*,bool> > >* get_player1_own()
+    {
+        return &_player1_own;
+    }
+    vector<vector<pair<Ship*,bool> > >* get_player1_enemy()
+    {
+        return &_player1_enemy;
+    }
+    vector<vector<pair<Ship*,bool> > >* get_player2_own()
+    {
+        return &_player2_own;
+    }
+    vector<vector<pair<Ship*,bool> > >* get_player2_enemy()
+    {
+        return &_player2_enemy;
+    }
+
+    int get_changed_x()
+    {
+        return _changed_x;
+    }
+    int get_changed_y()
+    {
+        return _changed_y;
+    }
+    bool get_wait(){return _wait_for_direction;}
 };
 
 #endif // GAMEMASTER_HPP_INCLUDED

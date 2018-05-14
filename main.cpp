@@ -1,7 +1,7 @@
-#include <vector>
-#include <cstdlib>
+//#include <vector>
+//#include <cstdlib>
 #include <ctime>
-#include "graphics.hpp"
+/*#include "graphics.hpp"
 #include "Widget.hpp"
 #include "Checkbox.hpp"
 #include "StaticText.hpp"
@@ -17,18 +17,18 @@
 #include "CALCULATOR.hpp"
 #include "KOLCSONZO.hpp"
 #include "FILTER.hpp"
-#include "GameMaster.hpp"
+#include "GameMaster.hpp"*/
 #include "TORPEDO.hpp"
 
-#include <iostream>
+//#include <iostream>
 
-using namespace std;
-using namespace genv;
+//using namespace std;
+//using namespace genv;
 
 static const double XX=1000;
 static const double YY=1000;
 
-enum asd{a,s,d};
+//enum asd{a,s,d};
 
 int main()
 {
